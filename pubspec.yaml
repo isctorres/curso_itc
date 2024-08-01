@@ -36,6 +36,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   easy_splash_screen: ^1.0.4
+  social_login_buttons: ^1.0.7
+  convex_bottom_bar: ^3.2.0
 
 dev_dependencies:
   flutter_test:

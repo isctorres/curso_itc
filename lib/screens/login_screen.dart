@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_login_buttons/social_login_buttons.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -8,6 +9,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
 
@@ -29,13 +32,33 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
 
-    final ltvLogin = Positioned(
+    final btnEmail = Positioned(
       bottom: 100,
+      child: SocialLoginButton(
+        buttonType: SocialLoginButtonType.generalLogin, 
+        text: 'Validar usuario',
+        onPressed: (){
+          isLoading = true;
+          setState(() {});
+          Future.delayed(Duration(seconds: 3))
+          .then((value) => Navigator.pushNamed(context, '/home'));
+          //Navigator.pushNamed(context, '/home');
+        }
+      ),
+    );
+
+    final logoTec = Positioned(
+      top: 200,
+      child: Image.asset('assets/logo.png', height: 200,)
+    );
+
+    final ltvLogin = Positioned(
+      bottom: 200,
       child: Container(
         width: MediaQuery.of(context).size.width * .9,
         //margin: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(.5),
+          color: Colors.white,//Colors.black.withOpacity(.5),
           borderRadius: BorderRadius.circular(10)
         ),
         child: ListView(
@@ -43,7 +66,8 @@ class _LoginScreenState extends State<LoginScreen> {
           shrinkWrap: true,
           children: [
             txtUser,
-            txtPwd
+            txtPwd,
+            isLoading ? CircularProgressIndicator() : Container()
           ],
         ),
       ),
@@ -65,7 +89,9 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            ltvLogin
+            ltvLogin,
+            btnEmail,
+            logoTec,
           ],
         ),
       ),
