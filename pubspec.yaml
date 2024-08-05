@@ -38,6 +38,7 @@ dependencies:
   easy_splash_screen: ^1.0.4
   social_login_buttons: ^1.0.7
   convex_bottom_bar: ^3.2.0
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
